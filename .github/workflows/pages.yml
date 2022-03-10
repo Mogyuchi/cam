@@ -1,0 +1,37 @@
+name: Pages
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+        with:
+          flavor: release
+      - name: Setup webdev
+        run: dart pub global activate webdev
+      - name: Install deps
+        run: dart pub get
+      - name: Build
+        run: webdev build -n unsound
+      - name: Setup git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Action"
+      - name: Commit
+        run: |
+          git checkout --orphan tmp
+          ls -a  |  grep -vE '^(build|.git|.gitignore)$' | xargs rm -rf
+          mv build/*(D) .
+          git add .
+          git commit -m "Build by GitHub Action"
+      - name: Push
+        run: git push -f origin gh-pages
