@@ -34,4 +34,4 @@ jobs:
           git add .
           git commit -m "Build by GitHub Action"
       - name: Push
-        run: git push -f origin gh-pages
+        run: git push -f origin tmp:gh-pages
