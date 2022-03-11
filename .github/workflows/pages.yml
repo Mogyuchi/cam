@@ -29,7 +29,7 @@ jobs:
       - name: Commit
         run: |
           git checkout --orphan tmp
-          ls -a  |  grep -vE '^(build|.git|.gitignore)$' | xargs rm -rf | true
+          ls -a  |  grep -vE '^(build|.git|.gitignore|CNAME)$' | xargs rm -rf | true
           mv build/{,.[^.]}* .
           git add .
           git commit -m "Build by GitHub Action"
