@@ -9,6 +9,7 @@ final List<String> offlineUrls = [
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './icons/ogp0312.jpeg',
   './main.dart.js',
   './manifest.json',
   './packages/\$sdk/_internal/strong.sum',
@@ -30,4 +31,4 @@ final List<String> offlineUrls = [
 ];
 
 /// Last modified timestamp of the files
-final String lastModified = '2022-03-11T04:08:34.329Z';
+final String lastModified = '2022-03-11T18:51:53.641Z';
