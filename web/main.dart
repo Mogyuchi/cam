@@ -7,10 +7,7 @@ void main() {
   window.navigator.mediaDevices?.getUserMedia({
     'video': {'facingMode': "user"}
   }).then((stream) {
-    var video = VideoElement()
-      ..autoplay = true
-      ..srcObject = stream
-      ..id = 'camera';
-    document.querySelector('#output')?.append(video);
+    var camera = document.querySelector('#camera') as VideoElement;
+    camera.srcObject = stream;
   });
 }
