@@ -4,7 +4,9 @@ import 'package:pwa/client.dart' as pwa;
 
 void main() {
   pwa.Client(scriptUrl: './pwa.dart.js');
-  window.navigator.mediaDevices?.getUserMedia({'video': true}).then((stream) {
+  window.navigator.mediaDevices?.getUserMedia({
+    'video': {'facingMode': "user"}
+  }).then((stream) {
     var video = VideoElement()
       ..autoplay = true
       ..srcObject = stream
